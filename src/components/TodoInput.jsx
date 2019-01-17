@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+const qs = require('qs');
 
 class TodoInput extends Component {
 	constructor(props) {
@@ -16,9 +17,8 @@ class TodoInput extends Component {
 	// };
 
 	handleSubmit = e => {
-		//const { text } = this.state;
 		axios
-			.post('/todos', { text: this.state.text })
+			.post('/todos', qs.stringify({ text: this.state.text }))
 			.then(todo => console.log(todo))
 			.catch(e => console.log(e));
 		e.preventDefault();

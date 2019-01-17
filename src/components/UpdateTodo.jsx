@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import styled from 'styled-components';
 
+const qs = require('qs');
 const UpdateForm = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -27,7 +28,7 @@ class UpdateTodo extends Component {
 	handleSubmit = e => {
 		const { todo } = this.state;
 		axios
-			.patch(`/todos/${this.props.match.params.id}`, todo)
+			.patch(`/todos/${this.props.match.params.id}`, qs.stringify(todo))
 			.then(res => this.props.history.push('/todo-list'))
 			.catch(function(error) {
 				console.log(error);
