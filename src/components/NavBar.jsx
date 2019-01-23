@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import { withRouter } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 class Navbar extends Component {
+	handleClick = () => {
+		sessionStorage.removeItem('token');
+		this.props.history.push('/');
+	};
+
 	componentDidMount() {
 		var elems = document.querySelectorAll('.sidenav');
 		var instances = M.Sidenav.init(elems);
@@ -19,18 +26,32 @@ class Navbar extends Component {
 							<i className="material-icons">menu</i>
 						</a>
 						<ul className="right hide-on-med-and-down">
-							<li>
-								<a href="/todo-list">Todos</a>
-							</li>
-							<li>
-								<a href="/todo-list/add">Add a Todo</a>
-							</li>
-							<li>
-								<a href="collapsible.html">Javascript</a>
-							</li>
-							<li>
-								<a href="mobile.html">Mobile</a>
-							</li>
+							{!sessionStorage['token'] ? (
+								<React.Fragment>
+									<li>
+										<a href="/register">Register</a>
+									</li>
+									<li>
+										<a href="/login">Login</a>
+									</li>
+								</React.Fragment>
+							) : (
+								<React.Fragment>
+									<button onClick={this.handleClick}>Logout</button>
+									<li>
+										<a href="/todo-list">Todos</a>
+									</li>
+									<li>
+										<a href="/todo-list/add">Add a Todo</a>
+									</li>
+									<li>
+										<a href="collapsible.html">Javascript</a>
+									</li>
+									<li>
+										<a href="mobile.html">Mobile</a>
+									</li>
+								</React.Fragment>
+							)}
 						</ul>
 					</div>
 				</nav>
@@ -54,4 +75,4 @@ class Navbar extends Component {
 	}
 }
 
-export default Navbar;
+export default withRouter(Navbar);

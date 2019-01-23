@@ -42,11 +42,14 @@ class Todo extends Component {
 	};
 
 	componentDidMount() {
+		//const token = sessionStorage.getItem('token');
 		const { id } = this.props.match.params;
-		axios.get(`/todos/${id}`).then(res => {
-			const { todo } = res.data;
-			this.setState({ todo });
-		});
+		axios
+			.get(`/todos/${id}` /*, { headers: { 'x-access-token': token } }*/)
+			.then(res => {
+				const { todo } = res.data;
+				this.setState({ todo });
+			});
 	}
 
 	render() {

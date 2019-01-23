@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Todos from './Todos';
 const qs = require('qs');
 
 class TodoInput extends Component {
@@ -12,10 +13,6 @@ class TodoInput extends Component {
 		this.setState({ text: e.target.value });
 	};
 
-	// handleChecked = e => {
-	// 	this.setState(state => ({ completed: !state.checked }));
-	// };
-
 	handleSubmit = e => {
 		axios
 			.post('/todos', qs.stringify({ text: this.state.text }))
@@ -26,7 +23,6 @@ class TodoInput extends Component {
 	};
 
 	render() {
-		console.log(this.state);
 		const { text } = this.state;
 		return (
 			<div className="row">

@@ -27,6 +27,16 @@ class UpdateTodo extends Component {
 
 	handleSubmit = e => {
 		const { todo } = this.state;
+		const token = sessionStorage.getItem('token');
+		// const payload = {
+		// 	headers: { 'x-access-token': token },
+		// 	data: qs.stringify(todo)
+		// };
+		const headers = {
+			'x-access-token': token
+		};
+		const data = qs.stringify(todo);
+
 		axios
 			.patch(`/todos/${this.props.match.params.id}`, qs.stringify(todo))
 			.then(res => this.props.history.push('/todo-list'))
@@ -38,8 +48,11 @@ class UpdateTodo extends Component {
 
 	componentDidMount() {
 		const { id } = this.props.match.params;
+		const token = sessionStorage.getItem('token');
 		axios
-			.get(`/todos/${id}`)
+			.get(`/todos/${id}`, {
+				headers: { 'x-access-token': token }
+			})
 			.then(res => {
 				this.setState({ todo: res.data.todo });
 			})
