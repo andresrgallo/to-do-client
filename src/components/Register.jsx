@@ -34,7 +34,8 @@ export default class Register extends Component {
 			  )
 					.then(() => this.props.history.push('/login'))
 					.catch(error => {
-						if (error.response) alert(error.response.data.error);
+						if (error.response && error.response.data.code === 11000)
+							alert('Email already exists!');
 					});
 
 		e.preventDefault();

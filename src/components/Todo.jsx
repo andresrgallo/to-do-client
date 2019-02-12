@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
+import Todos from './Todos';
 import Schedule from '@material-ui/icons/Schedule';
 import Mood from '@material-ui/icons/Mood';
 import SentimentVeryDissatisfied from '@material-ui/icons/SentimentVeryDissatisfied';
@@ -47,9 +47,11 @@ class Todo extends Component {
 		axios
 			.get(`/todos/${id}` /*, { headers: { 'x-access-token': token } }*/)
 			.then(res => {
+				console.log('ressss', res);
 				const { todo } = res.data;
 				this.setState({ todo });
-			});
+			})
+			.catch(e => this.props.history.push('/todo-list'));
 	}
 
 	render() {
@@ -71,30 +73,38 @@ class Todo extends Component {
 						</div>
 						<div className="card-action">
 							<span>
-								Scheduled...{' '}
-								{todo.completedAt ? todo.completedAt : <Schedule />}
+								{todo.completedAt ? (
+									`Completed on: ${new Date(
+										todo.completedAt
+									).getDate()} - ${new Date(
+										todo.completedAt
+									).getMonth()} - ${new Date(todo.completedAt).getFullYear()}`
+								) : (
+									<Schedule />
+								)}
 							</span>
+							<p>
+								<Link
+									to={`/todo-list/update/${todo._id}`}
+									className="waves-effect waves-light btn-small"
+									style={{ marginLeft: 10 }}
+								>
+									<MaterialIcon className="material-icons left">
+										<SystemUpdate />
+									</MaterialIcon>
+									Update
+								</Link>
 
-							<Link
-								to={`/todo-list/update/${todo._id}`}
-								className="waves-effect waves-light btn-small"
-								style={{ marginLeft: 10 }}
-							>
-								<MaterialIcon className="material-icons left">
-									<SystemUpdate />
-								</MaterialIcon>
-								Update
-							</Link>
-
-							<Button
-								className="waves-effect waves-light btn-small"
-								onClick={this.handleDelete}
-							>
-								<MaterialIcon className="material-icons left">
-									<Delete />
-								</MaterialIcon>
-								Delete
-							</Button>
+								<Button
+									className="waves-effect waves-light btn-small"
+									onClick={this.handleDelete}
+								>
+									<MaterialIcon className="material-icons left">
+										<Delete />
+									</MaterialIcon>
+									Delete
+								</Button>
+							</p>
 						</div>
 					</div>
 				</div>

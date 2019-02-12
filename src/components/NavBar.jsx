@@ -44,12 +44,6 @@ class Navbar extends Component {
 									<li>
 										<a href="/todo-list/add">Add a Todo</a>
 									</li>
-									<li>
-										<a href="collapsible.html">Javascript</a>
-									</li>
-									<li>
-										<a href="mobile.html">Mobile</a>
-									</li>
 								</React.Fragment>
 							)}
 						</ul>
@@ -58,16 +52,10 @@ class Navbar extends Component {
 
 				<ul className="sidenav" id="mobile-demo">
 					<li>
-						<a href="sass.html">Sass</a>
+						<a href="/todo-list">Todos</a>
 					</li>
 					<li>
-						<a href="badges.html">Components</a>
-					</li>
-					<li>
-						<a href="collapsible.html">Javascript</a>
-					</li>
-					<li>
-						<a href="mobile.html">Mobile</a>
+						<a href="/todo-list/add">Add a Todo</a>
 					</li>
 				</ul>
 			</React.Fragment>

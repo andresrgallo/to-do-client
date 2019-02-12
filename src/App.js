@@ -28,6 +28,9 @@ const Register = asyncComponent(() => {
 const Login = asyncComponent(() => {
 	return import('./components/Login').then(module => module.default);
 });
+const ForgotPassword = asyncComponent(() => {
+	return import('./components/ForgotPassword').then(module => module.default);
+});
 
 class App extends Component {
 	render() {
@@ -39,6 +42,7 @@ class App extends Component {
 						<Route exact path="/" component={Home} />
 						<Route path="/register" component={Register} />
 						<Route path="/login" component={Login} />
+						<Route path="/forgot-password" component={ForgotPassword} />
 						<Route
 							exact
 							path="/todo-list"

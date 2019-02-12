@@ -1,46 +1,23 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
 
-const qs = require('qs');
-
-class Login extends Component {
-	constructor(props) {
-		super(props);
-		this.state = { email: null, password: null };
-	}
+class ForgotPassword extends Component {
+	state = { email: null };
 
 	handleInput = e => {
-		const name = e.target.name;
-		console.log(name);
-		this.setState({ [name]: e.target.value });
+		this.setState({ email: e.target.value });
 	};
 
 	handleSubmit = e => {
-		Axios.post(
-			'/users/login',
-			qs.stringify({
-				email: this.state.email,
-				password: this.state.password
-			})
-		)
-			.then(res => {
-				sessionStorage.setItem('token', res.data.data.token);
-				this.props.history.push('/todo-list');
-			})
-			.catch(error => {
-				alert('Wrong email or password');
-			});
-
+		console.log('submit');
 		e.preventDefault();
 	};
 
 	render() {
-		console.log('at login', this.state);
 		return (
 			<div className="container">
 				<div className="col s8 m8 l6">
 					<div className="card-panel">
-						<h2 className="header2">Log In To Your Account</h2>
+						<h2 className="header2">Reset your password</h2>
 						<div className="row">
 							<form className="col s12" onSubmit={this.handleSubmit}>
 								<div className="row">
@@ -54,20 +31,6 @@ class Login extends Component {
 											required
 										/>
 										<label htmlFor="email">Enter Email</label>
-									</div>
-								</div>
-								<div className="row">
-									<div className="input-field col s12">
-										<input
-											placeholder="password"
-											id="password"
-											name="password"
-											type="password"
-											onChange={this.handleInput}
-											required
-										/>
-										<label htmlFor="password">Password</label>
-										<a href="/forgot-password">Forgot the password?</a>
 									</div>
 								</div>
 								<div className="row">
@@ -93,4 +56,4 @@ class Login extends Component {
 	}
 }
 
-export default Login;
+export default ForgotPassword;
