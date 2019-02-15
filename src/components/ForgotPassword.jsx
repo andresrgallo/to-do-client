@@ -1,18 +1,39 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
+
+const qs = require('qs');
 
 class ForgotPassword extends Component {
-	state = { email: null };
+	constructor(props) {
+		super(props);
+		this.state = { email: null };
+	}
 
 	handleInput = e => {
 		this.setState({ email: e.target.value });
 	};
 
 	handleSubmit = e => {
-		console.log('submit');
+		const { email } = this.state;
+
+		Axios.post(
+			'/users/forgotpassword',
+			qs.stringify({
+				email: email
+			})
+		)
+			.then(() => {
+				alert(`A new password will be sent to ${email} `);
+				this.props.history.push('/login');
+			})
+			.catch(error => {
+				if (error.response) alert(error.response.data.error);
+			});
 		e.preventDefault();
 	};
 
 	render() {
+		// console.log(this.state);
 		return (
 			<div className="container">
 				<div className="col s8 m8 l6">

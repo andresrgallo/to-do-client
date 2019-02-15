@@ -7,13 +7,17 @@ import ThumbDown from '@material-ui/icons/ThumbDown';
 class TodoLine extends Component {
 	render() {
 		const { todos } = this.props;
-		console.log('at todoline', todos);
 		const list =
 			todos.length > 0 ? (
 				todos.map((todo, index) => (
 					<tr key={index}>
 						<td>
 							<Link to={`/todo-list/${todo._id}`}>{todo.text}</Link>
+						</td>
+						<td>
+							{`${new Date(todo.createdAt).getDate()} - ${new Date(
+								todo.createdAt
+							).getMonth()} - ${new Date(todo.createdAt).getFullYear()}`}
 						</td>
 						<td>
 							{todo.completed ? <ThumbUp /> : <ThumbDown />}
@@ -29,7 +33,9 @@ class TodoLine extends Component {
 					</tr>
 				))
 			) : (
-				<p>No todos for now!</p>
+				<tr>
+					<td>No todos for now</td>
+				</tr>
 			);
 
 		return <React.Fragment>{list}</React.Fragment>;

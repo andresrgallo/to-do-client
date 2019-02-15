@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Todos from './Todos';
+import { capitalize } from '../utils/capitalize';
 const qs = require('qs');
 
 class TodoInput extends Component {
@@ -14,8 +15,10 @@ class TodoInput extends Component {
 	};
 
 	handleSubmit = e => {
+		let { text } = this.state;
+		text = capitalize(text);
 		axios
-			.post('/todos', qs.stringify({ text: this.state.text }))
+			.post('/todos', qs.stringify({ text }))
 			.then(todo => console.log(todo))
 			.catch(e => console.log(e));
 		e.preventDefault();

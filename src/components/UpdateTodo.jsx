@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Todos from './Todos';
+import { capitalize } from '../utils/capitalize';
 
 import styled from 'styled-components';
 
@@ -27,16 +27,14 @@ class UpdateTodo extends Component {
 	};
 
 	handleSubmit = e => {
-		const { todo } = this.state;
-		const token = sessionStorage.getItem('token');
-		// const payload = {
-		// 	headers: { 'x-access-token': token },
-		// 	data: qs.stringify(todo)
+		let { todo } = this.state;
+		todo.text = capitalize(todo.text);
+		console.log('toodoo', todo);
+		//const token = sessionStorage.getItem('token');
+		// const headers = {
+		// 	'x-access-token': token
 		// };
-		const headers = {
-			'x-access-token': token
-		};
-		const data = qs.stringify(todo);
+		//const data = qs.stringify(todo);
 
 		axios
 			.patch(`/todos/${this.props.match.params.id}`, qs.stringify(todo))
