@@ -47,7 +47,9 @@ export default class Register extends Component {
 			<div className="container">
 				<div className="col s8 m8 l6">
 					<div className="card-panel">
-						<h2 className="header2">Open an Account</h2>
+						<h2 className="header2" style={{ textAlign: 'center' }}>
+							Open an Account
+						</h2>
 						<div className="row">
 							<form className="col s12" onSubmit={this.handleSubmit}>
 								<div className="row">
@@ -88,20 +90,21 @@ export default class Register extends Component {
 										/>
 										<label htmlFor="password">Password</label>
 									</div>
-									<div className="row">
-										<div className="input-field col s12">
-											<input
-												placeholder="Confirm password"
-												name="confirmPassword"
-												id="confirm-password"
-												type="password"
-												onChange={this.handleInput}
-												required
-											/>
-											<label htmlFor="confirm-password">Confirm Password</label>
-										</div>
+								</div>
+								<div className="row">
+									<div className="input-field col s12">
+										<input
+											placeholder="Confirm password"
+											name="confirmPassword"
+											id="confirm-password"
+											type="password"
+											onChange={this.handleInput}
+											required
+										/>
+										<label htmlFor="confirm-password">Confirm Password</label>
 									</div>
 								</div>
+
 								<div className="row">
 									<div className="row">
 										<div className="input-field col s12">

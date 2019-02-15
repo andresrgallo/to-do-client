@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import styled from 'styled-components';
 
 import TodoLine from './TodoLine';
 
@@ -12,6 +13,15 @@ import TodoLine from './TodoLine';
 		Axios.defaults.headers.common['x-access-token'] = null;
 	}
 })();
+
+const Table = styled.table`
+	width: 70%;
+	margin-left: 15%;
+`;
+
+const Th = styled.th`
+	text-align: center;
+`;
 
 class Todos extends Component {
 	constructor(props) {
@@ -34,21 +44,21 @@ class Todos extends Component {
 		const todos = this.state.todos;
 		return (
 			<div>
-				<h1>Todos</h1>
-				<table>
+				<h1 style={{ textAlign: 'center' }}>Todos</h1>
+				<Table>
 					<thead>
 						<tr>
-							<th>Todo</th>
-							<th>Created Date</th>
-							<th>Completed?</th>
-							<th>Completed Date</th>
+							<Th>Todo</Th>
+							<Th>Created Date</Th>
+							<Th>Completed?</Th>
+							<Th>Completed Date</Th>
 						</tr>
 					</thead>
 
 					<tbody>
 						<TodoLine todos={todos} />
 					</tbody>
-				</table>
+				</Table>
 			</div>
 		);
 	}

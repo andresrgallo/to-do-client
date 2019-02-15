@@ -17,6 +17,11 @@ const Signout = styled.button`
 	padding-right: 20px;
 `;
 
+const Link = styled.a`
+	font-size: 20px;
+	color: #ffc287;
+`;
+
 class Navbar extends Component {
 	handleClick = () => {
 		sessionStorage.removeItem('token');
@@ -34,7 +39,13 @@ class Navbar extends Component {
 				<nav>
 					<div className="nav-wrapper">
 						<a href="/" className="brand-logo">
-							<ListAlt style={{ fontSize: '63px', paddingLeft: '20px' }} />
+							<ListAlt
+								style={{
+									fontSize: '63px',
+									paddingLeft: '20px',
+									color: '#ffc287'
+								}}
+							/>
 						</a>
 						<a href="#" data-target="mobile-demo" className="sidenav-trigger">
 							<i className="material-icons">menu</i>
@@ -43,10 +54,10 @@ class Navbar extends Component {
 							{!sessionStorage['token'] ? (
 								<React.Fragment>
 									<li>
-										<a href="/register">Register</a>
+										<Link href="/register">Register</Link>
 									</li>
 									<li>
-										<a href="/login">Login</a>
+										<Link href="/login">Login</Link>
 									</li>
 								</React.Fragment>
 							) : (
@@ -66,17 +77,29 @@ class Navbar extends Component {
 						</ul>
 					</div>
 				</nav>
-
 				<ul className="sidenav" id="mobile-demo">
-					<li>
-						<a href="/todo-list">Todos</a>
-					</li>
-					<li>
-						<a href="/todo-list/add">Add a Todo</a>
-					</li>
-					<li>
-						<a href="/users/profile">Profile</a>
-					</li>
+					{!sessionStorage['token'] ? (
+						<React.Fragment>
+							<li>
+								<Link href="/register">Register</Link>
+							</li>
+							<li>
+								<Link href="/login">Login</Link>
+							</li>
+						</React.Fragment>
+					) : (
+						<React.Fragment>
+							<li>
+								<a href="/todo-list">Todos</a>
+							</li>
+							<li>
+								<a href="/todo-list/add">Add a Todo</a>
+							</li>
+							<li>
+								<a href="/users/profile">Profile</a>
+							</li>
+						</React.Fragment>
+					)}
 				</ul>
 			</React.Fragment>
 		);

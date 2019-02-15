@@ -41,7 +41,9 @@ class Login extends Component {
 			<div className="container">
 				<div className="col s8 m8 l6">
 					<div className="card-panel">
-						<h2 className="header2">Log In To Your Account</h2>
+						<h2 className="header2" style={{ textAlign: 'center' }}>
+							Log In To Your Account
+						</h2>
 						<div className="row">
 							<form className="col s12" onSubmit={this.handleSubmit}>
 								<div className="row">

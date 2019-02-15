@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import ThumbUp from '@material-ui/icons/ThumbUp';
 import ThumbDown from '@material-ui/icons/ThumbDown';
+
+const Td = styled.th`
+	text-align: center;
+`;
 
 class TodoLine extends Component {
 	render() {
@@ -11,17 +16,22 @@ class TodoLine extends Component {
 			todos.length > 0 ? (
 				todos.map((todo, index) => (
 					<tr key={index}>
-						<td>
+						<Td>
 							<Link to={`/todo-list/${todo._id}`}>{todo.text}</Link>
-						</td>
-						<td>
+						</Td>
+						<Td>
 							{`${new Date(todo.createdAt).getDate()} - ${new Date(
 								todo.createdAt
 							).getMonth()} - ${new Date(todo.createdAt).getFullYear()}`}
-						</td>
-						<td>
-							{todo.completed ? <ThumbUp /> : <ThumbDown />}
-							&emsp;&emsp;
+						</Td>
+						<Td>
+							{todo.completed ? (
+								<ThumbUp style={{ color: '#acfb8c' }} />
+							) : (
+								<ThumbDown style={{ color: '#fe4843' }} />
+							)}
+						</Td>
+						<Td>
 							{todo.completed
 								? `Completed on: ${new Date(
 										todo.completedAt
@@ -29,7 +39,7 @@ class TodoLine extends Component {
 										todo.completedAt
 								  ).getMonth()} - ${new Date(todo.completedAt).getFullYear()}`
 								: null}
-						</td>
+						</Td>
 					</tr>
 				))
 			) : (

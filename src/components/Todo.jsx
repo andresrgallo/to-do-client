@@ -56,6 +56,7 @@ class Todo extends Component {
 
 	render() {
 		const { todo } = this.state;
+		const sch = `${<Schedule />} to be`;
 
 		return (
 			<div className="row">
@@ -68,7 +69,11 @@ class Todo extends Component {
 						<div className="card-action">
 							<span>
 								Completed?{' '}
-								{todo.completed ? <Mood /> : <SentimentVeryDissatisfied />}
+								{todo.completed ? (
+									<Mood style={{ color: '#acfb8c' }} />
+								) : (
+									<SentimentVeryDissatisfied style={{ color: '#fe4843' }} />
+								)}
 							</span>
 						</div>
 						<div className="card-action">
@@ -80,7 +85,9 @@ class Todo extends Component {
 										todo.completedAt
 									).getMonth()} - ${new Date(todo.completedAt).getFullYear()}`
 								) : (
-									<Schedule />
+									<span>
+										To be completed <Schedule />
+									</span>
 								)}
 							</span>
 							<p>
