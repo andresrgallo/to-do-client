@@ -6,10 +6,16 @@ import { confirmExpiration } from '../utils/jsnTokenMiddleware';
 import styled from 'styled-components';
 
 const qs = require('qs');
+
 const UpdateForm = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	width: 100%;
+`;
+
+const H4 = styled.h4`
+	margin-top: 2.8rem;
+	text-align: center;
+	padding: 30px;
+	line-height: 110%;
 `;
 
 class UpdateTodo extends Component {
@@ -66,11 +72,11 @@ class UpdateTodo extends Component {
 	render() {
 		const { todo } = this.state;
 		return (
-			<UpdateForm className="row" onSubmit={this.handleSubmit}>
-				<h1>Update Todo</h1>
-				<form className="col s8">
+			<UpdateForm onSubmit={this.handleSubmit}>
+				<H4 className="header-2">Update Todo</H4>
+				<form className="col s12 l6 offset-l3 ">
 					<div className="row">
-						<div className="col s8">
+						<div className="col s12 l6 offset-l3">
 							<label htmlFor="text">Todo Description</label>
 							<input
 								name="text"
@@ -82,7 +88,7 @@ class UpdateTodo extends Component {
 						</div>
 					</div>
 					<div className="row">
-						<div className="input-field col s8">
+						<div className="input-field col s12 l6 offset-l3">
 							<label>
 								<input
 									name="completed"
@@ -96,7 +102,7 @@ class UpdateTodo extends Component {
 						</div>
 					</div>
 					<div className="row">
-						<div className="input-field col s8">
+						<div className="input-field col s12 l6 offset-l3">
 							<button
 								className="btn cyan waves-effect waves-light right"
 								type="submit"

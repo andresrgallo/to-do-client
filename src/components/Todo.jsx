@@ -6,17 +6,22 @@ import Todos from './Todos';
 import { confirmExpiration } from '../utils/jsnTokenMiddleware';
 import Schedule from '@material-ui/icons/Schedule';
 import Mood from '@material-ui/icons/Mood';
+import Check from '@material-ui/icons/CheckCircleOutline';
 import SentimentVeryDissatisfied from '@material-ui/icons/SentimentVeryDissatisfied';
 import Delete from '@material-ui/icons/Delete';
 import SystemUpdate from '@material-ui/icons/SystemUpdate';
 
 const H1 = styled.h1`
 	text-align: center
-	padding: 20px
+	padding: 30px
+	font-size: 2.28rem;
+	line-height: 110%;
+	margin: 2.8rem 0 0.912rem 0;
 `;
 
 const P = styled.p`
 	text-transform: capitalize;
+	font-size: 20px;
 `;
 
 const MaterialIcon = styled.i`
@@ -25,6 +30,23 @@ const MaterialIcon = styled.i`
 const Button = styled.a`
 	margin: 10px
 	textAlign: center
+`;
+
+const TheButtons = styled.p`
+	text-align: right;
+`;
+
+const CompletedQ = styled.div`
+	display: flex;
+	align-items: center;
+`;
+const ToBeCompleted = styled.div`
+	display: flex;
+	align-items: center;
+`;
+
+const Span = styled.span`
+	font-size: 20px;
 `;
 
 class Todo extends Component {
@@ -68,28 +90,39 @@ class Todo extends Component {
 
 	render() {
 		const { todo } = this.state;
-		const sch = `${<Schedule />} to be`;
 
 		return (
 			<div className="row">
-				<div className="col s12 m7">
+				<div className="col s12 m6 offset-m3">
 					<div className="card">
-						<H1 className="card-title">Todo</H1>
+						<H1>Todo</H1>
 						<div className="card-content">
 							<P>{todo.text}</P>
 						</div>
 						<div className="card-action">
-							<span>
-								Completed?{' '}
+							<CompletedQ>
+								<Span>Completed? </Span>
 								{todo.completed ? (
-									<Mood style={{ color: '#acfb8c' }} />
+									<Check
+										style={{
+											color: '#acfb8c',
+											fontSize: '35px',
+											marginLeft: '20px'
+										}}
+									/>
 								) : (
-									<SentimentVeryDissatisfied style={{ color: '#fe4843' }} />
+									<SentimentVeryDissatisfied
+										style={{
+											color: '#fe4843',
+											fontSize: '35px',
+											marginLeft: '20px'
+										}}
+									/>
 								)}
-							</span>
+							</CompletedQ>
 						</div>
 						<div className="card-action">
-							<span>
+							<Span>
 								{todo.completedAt ? (
 									`Completed on: ${new Date(
 										todo.completedAt
@@ -97,12 +130,19 @@ class Todo extends Component {
 										todo.completedAt
 									).getMonth()} - ${new Date(todo.completedAt).getFullYear()}`
 								) : (
-									<span>
-										To be completed <Schedule />
-									</span>
+									<ToBeCompleted>
+										<Span>To be completed</Span>{' '}
+										<Schedule
+											style={{
+												color: 'orange',
+												fontSize: '35px',
+												marginLeft: '10px'
+											}}
+										/>
+									</ToBeCompleted>
 								)}
-							</span>
-							<p>
+							</Span>
+							<TheButtons>
 								<Link
 									to={`/todo-list/update/${todo._id}`}
 									className="waves-effect waves-light btn-small"
@@ -123,7 +163,7 @@ class Todo extends Component {
 									</MaterialIcon>
 									Delete
 								</Button>
-							</p>
+							</TheButtons>
 						</div>
 					</div>
 				</div>

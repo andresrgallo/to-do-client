@@ -3,7 +3,18 @@ import axios from 'axios';
 import Todos from './Todos';
 import { capitalize } from '../utils/capitalize';
 import { confirmExpiration } from '../utils/jsnTokenMiddleware';
+import styled from 'styled-components';
+
 const qs = require('qs');
+
+const Card = styled.div`
+	margin-top: 2.8rem;
+`;
+
+const H4 = styled.h4`
+	text-align: center;
+	padding: 20px;
+`;
 
 class TodoInput extends Component {
 	constructor(props) {
@@ -38,9 +49,9 @@ class TodoInput extends Component {
 		const { text } = this.state;
 		return (
 			<div className="row">
-				<div className="col s8 m8 l6">
-					<div className="card-panel">
-						<h4 className="header2">Add a Todo</h4>
+				<div className="col s8 m8 l6 offset-l3">
+					<Card className="card-panel">
+						<H4 className="card-title">Add a Todo</H4>
 						<div className="row">
 							<form className="col s12" onSubmit={this.handleSubmit}>
 								<div className="row">
@@ -73,7 +84,7 @@ class TodoInput extends Component {
 								</div>
 							</form>
 						</div>
-					</div>
+					</Card>
 				</div>
 			</div>
 		);

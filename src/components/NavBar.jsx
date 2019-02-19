@@ -7,9 +7,10 @@ import styled from 'styled-components';
 
 const Signout = styled.button`
 	background-color: #ee6e73;
-	color: white;
+	color: #ffc287;
 	border: none;
 	cursor: pointer;
+	font-size: 20px;
 	&:hover {
 		background-color: rgba(0, 0, 0, 0.1);
 	}
@@ -64,13 +65,13 @@ class Navbar extends Component {
 								<React.Fragment>
 									<Signout onClick={this.handleClick}>Logout</Signout>
 									<li>
-										<a href="/todo-list">Todos</a>
+										<Link href="/todo-list">Todos</Link>
 									</li>
 									<li>
-										<a href="/todo-list/add">Add a Todo</a>
+										<Link href="/todo-list/add">Add a Todo</Link>
 									</li>
 									<li>
-										<a href="/profile">Profile</a>
+										<Link href="/profile">Profile</Link>
 									</li>
 								</React.Fragment>
 							)}

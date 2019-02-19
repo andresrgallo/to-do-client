@@ -23,6 +23,13 @@ const Th = styled.th`
 	text-align: center;
 `;
 
+const H1 = styled.h1`
+	text-align: center;
+	font-size: 2.28rem;
+	line-height: 110%;
+	margin: 1.52rem 0 0.912rem 0;
+`;
+
 class Todos extends Component {
 	constructor(props) {
 		super(props);
@@ -44,7 +51,7 @@ class Todos extends Component {
 		const todos = this.state.todos;
 		return (
 			<div>
-				<h1 style={{ textAlign: 'center' }}>Todos</h1>
+				<H1>Todos</H1>
 				<Table>
 					<thead>
 						<tr>
