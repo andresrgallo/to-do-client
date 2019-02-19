@@ -54,6 +54,7 @@ class Login extends Component {
 											name="email"
 											type="email"
 											onChange={this.handleInput}
+											autoFocus
 											required
 										/>
 										<label htmlFor="email">Enter Email</label>

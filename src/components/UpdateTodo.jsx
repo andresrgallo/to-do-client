@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { capitalize } from '../utils/capitalize';
+import { confirmExpiration } from '../utils/jsnTokenMiddleware';
 
 import styled from 'styled-components';
 
@@ -17,6 +18,14 @@ class UpdateTodo extends Component {
 		this.state = { todo: { text: '', completed: '' } };
 	}
 
+	//Check if Jason Web Token has expired
+	componentWillMount() {
+		if (confirmExpiration()) {
+			sessionStorage.removeItem('token', 'email');
+			window.location = '/login';
+		}
+	}
+
 	handleChange = e => {
 		let { todo } = this.state;
 		const value =
@@ -29,16 +38,10 @@ class UpdateTodo extends Component {
 	handleSubmit = e => {
 		let { todo } = this.state;
 		todo.text = capitalize(todo.text);
-		console.log('toodoo', todo);
-		//const token = sessionStorage.getItem('token');
-		// const headers = {
-		// 	'x-access-token': token
-		// };
-		//const data = qs.stringify(todo);
 
 		axios
 			.patch(`/todos/${this.props.match.params.id}`, qs.stringify(todo))
-			.then(res => this.props.history.push('/todo-list'))
+			.then(() => this.props.history.push('/todo-list'))
 			.catch(function(error) {
 				console.log(error);
 			});

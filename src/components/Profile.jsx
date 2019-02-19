@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import { confirmExpiration } from '../utils/jsnTokenMiddleware';
 
 const qs = require('qs');
 
@@ -7,6 +8,14 @@ class Profile extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { oldPassword: null, newPassword: null };
+	}
+
+	//Check if Jason Web Token has expired
+	componentWillMount() {
+		if (confirmExpiration()) {
+			sessionStorage.removeItem('token', 'email');
+			window.location = '/login';
+		}
 	}
 
 	handleInput = e => {

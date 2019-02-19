@@ -4,12 +4,20 @@ import styled from 'styled-components';
 
 import ThumbUp from '@material-ui/icons/ThumbUp';
 import ThumbDown from '@material-ui/icons/ThumbDown';
+import { confirmExpiration } from '../utils/jsnTokenMiddleware';
 
 const Td = styled.th`
 	text-align: center;
 `;
 
 class TodoLine extends Component {
+	//Check if Jason Web Token has expired
+	componentWillMount() {
+		if (confirmExpiration()) {
+			sessionStorage.removeItem('token', 'email');
+			window.location = '/login';
+		}
+	}
 	render() {
 		const { todos } = this.props;
 		const list =

@@ -2,12 +2,21 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Todos from './Todos';
 import { capitalize } from '../utils/capitalize';
+import { confirmExpiration } from '../utils/jsnTokenMiddleware';
 const qs = require('qs');
 
 class TodoInput extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { text: '' };
+	}
+
+	//Check if Jason Web Token has expired
+	componentWillMount() {
+		if (confirmExpiration()) {
+			sessionStorage.removeItem('token', 'email');
+			window.location = '/login';
+		}
 	}
 
 	handleInput = e => {
@@ -42,6 +51,7 @@ class TodoInput extends Component {
 											type="text"
 											value={text}
 											onChange={this.handleInput}
+											autoFocus
 											required
 										/>
 										<label htmlFor="todo-description">Description</label>

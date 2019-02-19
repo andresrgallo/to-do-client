@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Todos from './Todos';
+import { confirmExpiration } from '../utils/jsnTokenMiddleware';
 import Schedule from '@material-ui/icons/Schedule';
 import Mood from '@material-ui/icons/Mood';
 import SentimentVeryDissatisfied from '@material-ui/icons/SentimentVeryDissatisfied';
@@ -41,6 +42,14 @@ class Todo extends Component {
 		this.props.history.push('/todo-list');
 	};
 
+	//Check if Jason Web Token has expired
+	componentWillMount() {
+		if (confirmExpiration()) {
+			sessionStorage.removeItem('token', 'email');
+			window.location = '/login';
+		}
+	}
+
 	componentDidMount() {
 		//const token = sessionStorage.getItem('token');
 		const { id } = this.props.match.params;
@@ -51,7 +60,10 @@ class Todo extends Component {
 				const { todo } = res.data;
 				this.setState({ todo });
 			})
-			.catch(e => this.props.history.push('/todo-list'));
+			.catch(e => {
+				console.log('catch', e);
+				this.props.history.push('/todo-list');
+			});
 	}
 
 	render() {

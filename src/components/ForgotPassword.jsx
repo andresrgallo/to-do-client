@@ -50,6 +50,7 @@ class ForgotPassword extends Component {
 											id="email"
 											name="email"
 											type="email"
+											autoFocus
 											onChange={this.handleInput}
 											required
 										/>

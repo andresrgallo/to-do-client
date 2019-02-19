@@ -60,6 +60,7 @@ export default class Register extends Component {
 											name="name"
 											type="text"
 											onChange={this.handleInput}
+											autoFocus
 											required
 										/>
 										<label htmlFor="name">Name</label>
