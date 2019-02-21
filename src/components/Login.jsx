@@ -11,13 +11,13 @@ class Login extends Component {
 
 	handleInput = e => {
 		const name = e.target.name;
-		console.log(name);
 		this.setState({ [name]: e.target.value });
 	};
 
 	handleSubmit = e => {
 		Axios.post(
-			'/users/login',
+			`${process.env.REACT_APP_API_URL}
+			/users/login`,
 			qs.stringify({
 				email: this.state.email,
 				password: this.state.password
@@ -28,7 +28,7 @@ class Login extends Component {
 				sessionStorage.setItem('email', res.data.data.user.email);
 				this.props.history.push('/todo-list');
 			})
-			.catch(error => {
+			.catch(() => {
 				alert('Wrong email or password');
 			});
 
@@ -36,7 +36,6 @@ class Login extends Component {
 	};
 
 	render() {
-		console.log('at login', this.state);
 		return (
 			<div className="container">
 				<div className="col s8 m8 l6">

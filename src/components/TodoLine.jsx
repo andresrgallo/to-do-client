@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import AddtoDo from '@material-ui/icons/AddToQueue';
 import ThumbUp from '@material-ui/icons/ThumbUp';
 import ThumbDown from '@material-ui/icons/ThumbDown';
 import { confirmExpiration } from '../utils/jsnTokenMiddleware';
 
 const Td = styled.th`
 	text-align: center;
+`;
+const MaterialIcon = styled.i`
+	padding: 5px;
 `;
 
 class TodoLine extends Component {
@@ -51,8 +55,22 @@ class TodoLine extends Component {
 					</tr>
 				))
 			) : (
-				<tr>
-					<td>No todos for now</td>
+				<tr style={{ borderBottom: 'none' }}>
+					<td style={{ textAlign: 'center', color: '#ad0b0b' }}>
+						-- Add your first to-do --
+					</td>
+					<td>
+						<Link
+							to={'/todo-list/add'}
+							className="waves-effect waves-light btn-small"
+							style={{ marginLeft: 10 }}
+						>
+							<MaterialIcon className="material-icons left">
+								<AddtoDo />
+							</MaterialIcon>
+							Add a To-Do
+						</Link>
+					</td>
 				</tr>
 			);
 

@@ -20,12 +20,10 @@ export default class Register extends Component {
 
 	handleSubmit = e => {
 		const { user } = this.state;
-		console.log(user.email);
-		//const { name, email, password } = user;
 		user.password !== user.confirmPassword
 			? alert("Passwords don't match")
 			: Axios.post(
-					'/users/register',
+					`${process.env.REACT_APP_API_URL}/users/register`,
 					qs.stringify({
 						name: user.name,
 						email: user.email,
@@ -42,7 +40,6 @@ export default class Register extends Component {
 	};
 
 	render() {
-		//console.log(this.state);
 		return (
 			<div className="container">
 				<div className="col s8 m8 l6">

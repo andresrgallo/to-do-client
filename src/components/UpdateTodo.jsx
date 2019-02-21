@@ -46,7 +46,10 @@ class UpdateTodo extends Component {
 		todo.text = capitalize(todo.text);
 
 		axios
-			.patch(`/todos/${this.props.match.params.id}`, qs.stringify(todo))
+			.patch(
+				`${process.env.REACT_APP_API_URL}/todos/${this.props.match.params.id}`,
+				qs.stringify(todo)
+			)
 			.then(() => this.props.history.push('/todo-list'))
 			.catch(function(error) {
 				console.log(error);
@@ -58,7 +61,7 @@ class UpdateTodo extends Component {
 		const { id } = this.props.match.params;
 		const token = sessionStorage.getItem('token');
 		axios
-			.get(`/todos/${id}`, {
+			.get(`${process.env.REACT_APP_API_URL}/todos/${id}`, {
 				headers: { 'x-access-token': token }
 			})
 			.then(res => {
@@ -73,11 +76,11 @@ class UpdateTodo extends Component {
 		const { todo } = this.state;
 		return (
 			<UpdateForm onSubmit={this.handleSubmit}>
-				<H4 className="header-2">Update Todo</H4>
+				<H4 className="header-2">Update To-Do</H4>
 				<form className="col s12 l6 offset-l3 ">
 					<div className="row">
 						<div className="col s12 l6 offset-l3">
-							<label htmlFor="text">Todo Description</label>
+							<label htmlFor="text">To-Do Description</label>
 							<input
 								name="text"
 								id="text"

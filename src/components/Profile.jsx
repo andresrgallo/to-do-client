@@ -27,7 +27,7 @@ class Profile extends Component {
 		const { oldPassword } = this.state;
 		const { newPassword } = this.state;
 		Axios.post(
-			'/users/update',
+			`${process.env.REACT_APP_API_URL}/users/update`,
 			qs.stringify({
 				oldPassword: oldPassword,
 				newPassword: newPassword,
@@ -39,9 +39,11 @@ class Profile extends Component {
 				this.props.history.push('/todo-list');
 			})
 			.catch(error => {
-				console.log('at profile', error);
-				if (error.response && error.response.data.code === 11000)
-					if (error.response) alert(error.response);
+				if (error.response && error.response.data.code === 11000) {
+					alert(error.response);
+				} else {
+					alert('Old password does not match');
+				}
 			});
 		e.preventDefault();
 	};
@@ -59,7 +61,6 @@ class Profile extends Component {
 								<div className="row">
 									<div className="input-field col s12">
 										<input
-											placeholder="Old Password"
 											id="old-password"
 											name="oldPassword"
 											type="password"
@@ -72,7 +73,6 @@ class Profile extends Component {
 								<div className="row">
 									<div className="input-field col s12">
 										<input
-											placeholder="New Password"
 											id="new-password"
 											name="newPassword"
 											type="password"

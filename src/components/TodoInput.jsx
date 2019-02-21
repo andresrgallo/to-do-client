@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import Todos from './Todos';
+import Axios from 'axios';
 import { capitalize } from '../utils/capitalize';
 import { confirmExpiration } from '../utils/jsnTokenMiddleware';
 import styled from 'styled-components';
+
+import { tokenInHeaders } from '../utils/tokenInHeaders';
+
+//Set up headers for Authorization when access /todos api
+tokenInHeaders();
 
 const qs = require('qs');
 
@@ -37,9 +41,8 @@ class TodoInput extends Component {
 	handleSubmit = e => {
 		let { text } = this.state;
 		text = capitalize(text);
-		axios
-			.post('/todos', qs.stringify({ text }))
-			.then(todo => console.log(todo))
+		Axios.post(`${process.env.REACT_APP_API_URL}/todos`, qs.stringify({ text }))
+			.then(todo => console.log('To-do Added'))
 			.catch(e => console.log(e));
 		e.preventDefault();
 		this.props.history.push('/todo-list');
@@ -47,17 +50,18 @@ class TodoInput extends Component {
 
 	render() {
 		const { text } = this.state;
+		console.log(this.state);
 		return (
 			<div className="row">
 				<div className="col s8 m8 l6 offset-l3">
 					<Card className="card-panel">
-						<H4 className="card-title">Add a Todo</H4>
+						<H4 className="card-title">Add a To-Do</H4>
 						<div className="row">
 							<form className="col s12" onSubmit={this.handleSubmit}>
 								<div className="row">
 									<div className="input-field col s12">
 										<input
-											placeholder="Todo Description"
+											placeholder="To-Do Description"
 											id="todo-description"
 											type="text"
 											value={text}

@@ -3,16 +3,18 @@ import Axios from 'axios';
 import styled from 'styled-components';
 
 import TodoLine from './TodoLine';
+import { tokenInHeaders } from '../utils/tokenInHeaders';
 
 //Set up headers for Authorization when access /todos api
-(function() {
-	const token = sessionStorage.getItem('token');
-	if (token) {
-		Axios.defaults.headers.common['x-access-token'] = token;
-	} else {
-		Axios.defaults.headers.common['x-access-token'] = null;
-	}
-})();
+tokenInHeaders();
+// (function() {
+// 	const token = sessionStorage.getItem('token');
+// 	if (token) {
+// 		Axios.defaults.headers.common['x-access-token'] = token;
+// 	} else {
+// 		Axios.defaults.headers.common['x-access-token'] = null;
+// 	}
+// })();
 
 const Table = styled.table`
 	width: 70%;
@@ -37,7 +39,7 @@ class Todos extends Component {
 	}
 
 	componentDidMount() {
-		Axios.get('/todos' /*, { headers: { 'x-access-token': token } }*/)
+		Axios.get(`${process.env.REACT_APP_API_URL}/todos`)
 			.then(response => {
 				const todos = response.data.todos;
 				this.setState({ todos });
@@ -51,17 +53,16 @@ class Todos extends Component {
 		const todos = this.state.todos;
 		return (
 			<div>
-				<H1>Todos</H1>
+				<H1>To-Do(s)</H1>
 				<Table>
 					<thead>
 						<tr>
-							<Th>Todo</Th>
+							<Th>To-Do</Th>
 							<Th>Created Date</Th>
 							<Th>Completed?</Th>
 							<Th>Completed Date</Th>
 						</tr>
 					</thead>
-
 					<tbody>
 						<TodoLine todos={todos} />
 					</tbody>

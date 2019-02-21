@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { withRouter } from 'react-router-dom';
-import { Button } from '@material-ui/core';
 import ListAlt from '@material-ui/icons/ListAlt';
 import styled from 'styled-components';
 
@@ -25,7 +24,7 @@ const Link = styled.a`
 
 class Navbar extends Component {
 	handleClick = () => {
-		sessionStorage.removeItem('token');
+		sessionStorage.removeItem('token', 'email');
 		this.props.history.push('/');
 	};
 
@@ -65,10 +64,10 @@ class Navbar extends Component {
 								<React.Fragment>
 									<Signout onClick={this.handleClick}>Logout</Signout>
 									<li>
-										<Link href="/todo-list">Todos</Link>
+										<Link href="/todo-list">To-Do(s)</Link>
 									</li>
 									<li>
-										<Link href="/todo-list/add">Add a Todo</Link>
+										<Link href="/todo-list/add">Add a To-Do</Link>
 									</li>
 									<li>
 										<Link href="/profile">Profile</Link>
@@ -91,10 +90,10 @@ class Navbar extends Component {
 					) : (
 						<React.Fragment>
 							<li>
-								<a href="/todo-list">Todos</a>
+								<a href="/todo-list">To-Do(s)</a>
 							</li>
 							<li>
-								<a href="/todo-list/add">Add a Todo</a>
+								<a href="/todo-list/add">Add a To-Do</a>
 							</li>
 							<li>
 								<a href="/users/profile">Profile</a>

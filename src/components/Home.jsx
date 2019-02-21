@@ -72,7 +72,7 @@ class Home extends Component {
 							}}
 						/>
 					</TheIcons>
-					<H1 id="welcome">To-do App</H1>
+					<H1 id="welcome">To-Do App</H1>
 					<P>
 						The best of way of getting organized and maximizing your valuable
 						time!

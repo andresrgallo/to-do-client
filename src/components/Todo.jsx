@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Todos from './Todos';
 import { confirmExpiration } from '../utils/jsnTokenMiddleware';
 import Schedule from '@material-ui/icons/Schedule';
-import Mood from '@material-ui/icons/Mood';
 import Check from '@material-ui/icons/CheckCircleOutline';
 import SentimentVeryDissatisfied from '@material-ui/icons/SentimentVeryDissatisfied';
 import Delete from '@material-ui/icons/Delete';
@@ -56,11 +54,10 @@ class Todo extends Component {
 	}
 
 	handleDelete = () => {
-		console.log(this.state);
 		axios
 			.delete(`/todos/${this.state.todo._id}`)
-			.then(todo => console.log(todo))
-			.catch(e => console.log(e));
+			.then(() => console.log('succesfully deleted'))
+			.catch(e => console.log('error', e));
 		this.props.history.push('/todo-list');
 	};
 
@@ -73,17 +70,14 @@ class Todo extends Component {
 	}
 
 	componentDidMount() {
-		//const token = sessionStorage.getItem('token');
 		const { id } = this.props.match.params;
 		axios
-			.get(`/todos/${id}` /*, { headers: { 'x-access-token': token } }*/)
+			.get(`${process.env.REACT_APP_API_URL}/todos/${id}`)
 			.then(res => {
-				console.log('ressss', res);
 				const { todo } = res.data;
 				this.setState({ todo });
 			})
 			.catch(e => {
-				console.log('catch', e);
 				this.props.history.push('/todo-list');
 			});
 	}
@@ -95,7 +89,7 @@ class Todo extends Component {
 			<div className="row">
 				<div className="col s12 m6 offset-m3">
 					<div className="card">
-						<H1>Todo</H1>
+						<H1>To-Do</H1>
 						<div className="card-content">
 							<P>{todo.text}</P>
 						</div>

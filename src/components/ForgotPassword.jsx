@@ -15,9 +15,8 @@ class ForgotPassword extends Component {
 
 	handleSubmit = e => {
 		const { email } = this.state;
-
 		Axios.post(
-			'/users/forgotpassword',
+			`${process.env.REACT_APP_API_URL}/users/forgotpassword`,
 			qs.stringify({
 				email: email
 			})
@@ -33,7 +32,6 @@ class ForgotPassword extends Component {
 	};
 
 	render() {
-		// console.log(this.state);
 		return (
 			<div className="container">
 				<div className="col s8 m8 l6">
