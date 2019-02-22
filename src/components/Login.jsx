@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import styled from 'styled-components';
+import { h2Style } from '../utils/h2Style';
 
 const qs = require('qs');
+
+const H2 = h2Style;
 
 class Login extends Component {
 	constructor(props) {
@@ -40,9 +44,9 @@ class Login extends Component {
 			<div className="container">
 				<div className="col s8 m8 l6">
 					<div className="card-panel">
-						<h2 className="header2" style={{ textAlign: 'center' }}>
+						<H2 className="header2" style={{ textAlign: 'center' }}>
 							Log In To Your Account
-						</h2>
+						</H2>
 						<div className="row">
 							<form className="col s12" onSubmit={this.handleSubmit}>
 								<div className="row">

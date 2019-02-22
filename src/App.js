@@ -31,6 +31,12 @@ const Login = asyncComponent(() => {
 const ForgotPassword = asyncComponent(() => {
 	return import('./components/ForgotPassword').then(module => module.default);
 });
+const ResetPassword = asyncComponent(() => {
+	return import('./components/ResetPassword').then(module => module.default);
+});
+const ResetMessage = asyncComponent(() => {
+	return import('./components/ResetMessage').then(module => module.default);
+});
 const Profile = asyncComponent(() => {
 	return import('./components/Profile').then(module => module.default);
 });
@@ -43,10 +49,12 @@ class App extends Component {
 					<NavBar logout={this.handleLogOut} />
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Route path="/register" component={Register} />
+						<Route exact path="/register" component={Register} />
 						<Route path="/login" component={Login} />
 						<Route path="/profile" component={Profile} />
 						<Route path="/forgot-password" component={ForgotPassword} />
+						<Route exact path="/reset-password" component={ResetPassword} />
+						<Route exact path="/reset-message" component={ResetMessage} />
 						<Route
 							exact
 							path="/todo-list"

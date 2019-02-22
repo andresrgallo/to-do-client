@@ -4,6 +4,12 @@ import { withRouter } from 'react-router-dom';
 import ListAlt from '@material-ui/icons/ListAlt';
 import styled from 'styled-components';
 
+const My = styled.a`
+	@media (max-width: 992px) {
+		visibility: hidden;
+	}
+`;
+
 const Signout = styled.button`
 	background-color: #ee6e73;
 	color: #ffc287;
@@ -38,7 +44,7 @@ class Navbar extends Component {
 			<React.Fragment>
 				<nav>
 					<div className="nav-wrapper">
-						<a href="/" className="brand-logo">
+						<My href="/" className="brand-logo">
 							<ListAlt
 								style={{
 									fontSize: '63px',
@@ -46,7 +52,7 @@ class Navbar extends Component {
 									color: '#ffc287'
 								}}
 							/>
-						</a>
+						</My>
 						<a href="#" data-target="mobile-demo" className="sidenav-trigger">
 							<i className="material-icons">menu</i>
 						</a>
@@ -81,6 +87,9 @@ class Navbar extends Component {
 					{!sessionStorage['token'] ? (
 						<React.Fragment>
 							<li>
+								<Link href="/">Home</Link>
+							</li>
+							<li>
 								<Link href="/register">Register</Link>
 							</li>
 							<li>
@@ -89,6 +98,9 @@ class Navbar extends Component {
 						</React.Fragment>
 					) : (
 						<React.Fragment>
+							<li>
+								<Link href="/">Home</Link>
+							</li>
 							<li>
 								<a href="/todo-list">To-Do(s)</a>
 							</li>

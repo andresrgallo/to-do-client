@@ -3,56 +3,56 @@ import Axios from 'axios';
 
 const qs = require('qs');
 
-class ForgotPassword extends Component {
+class Reset extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { email: null };
+		this.state = { code: '' };
 	}
 
 	handleInput = e => {
-		this.setState({ email: e.target.value });
+		this.setState({ code: e.target.value });
 	};
 
 	handleSubmit = e => {
-		const { email } = this.state;
+		const { code } = this.state;
 		Axios.post(
-			`${process.env.REACT_APP_API_URL}/users/forgotpassword`,
+			`${process.env.REACT_APP_API_URL}/users/resetpassword`,
 			qs.stringify({
-				email: email
+				code
 			})
 		)
-			.then(() => {
-				//alert(`A new password will be sent to ${email} `);
-				this.props.history.push('/reset-message');
-			})
+			.then(() => this.props.history.push('/login'))
 			.catch(error => {
-				if (error.response) alert(error.response.data.error);
+				if (error.response && error.response.data.code === 11000)
+					alert('Email already exists!');
 			});
+
 		e.preventDefault();
 	};
 
 	render() {
+		console.log('at resetp', this.state);
 		return (
-			<div className="container">
-				<div className="col s8 m8 l6">
+			<div className="row" style={{ marginTop: '50px' }}>
+				<div className="col s12 m8 l6 offset-l3 offsetm-2">
 					<div className="card-panel">
 						<h2 className="header2" style={{ textAlign: 'center' }}>
-							Reset your password
+							Enter your temporary password
 						</h2>
 						<div className="row">
-							<form className="col s12" onSubmit={this.handleSubmit}>
+							<form className="col s8  offset-s2" onSubmit={this.handleSubmit}>
 								<div className="row">
 									<div className="input-field col s12">
 										<input
-											placeholder="Email"
-											id="email"
-											name="email"
-											type="email"
+											placeholder="password"
+											id="code"
+											name="code"
+											type="password"
 											autoFocus
 											onChange={this.handleInput}
 											required
 										/>
-										<label htmlFor="email">Enter Email</label>
+										<label htmlFor="code">Enter password</label>
 									</div>
 								</div>
 								<div className="row">
@@ -78,4 +78,4 @@ class ForgotPassword extends Component {
 	}
 }
 
-export default ForgotPassword;
+export default Reset;
