@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import styled from 'styled-components';
-import { h2Style } from '../utils/h2Style';
+import { h2Style, cardPanelStyle } from '../utils/commonStyle';
 
 const qs = require('qs');
 
 const H2 = h2Style;
+
+const CardPanel = cardPanelStyle;
 
 class Login extends Component {
 	constructor(props) {
@@ -41,9 +42,9 @@ class Login extends Component {
 
 	render() {
 		return (
-			<div className="container">
-				<div className="col s8 m8 l6">
-					<div className="card-panel">
+			<div className="row">
+				<div className="col s10 m10 l8 offset-l2 offset-m1 offset-s1">
+					<CardPanel className="card-panel">
 						<H2 className="header2" style={{ textAlign: 'center' }}>
 							Log In To Your Account
 						</H2>
@@ -93,7 +94,7 @@ class Login extends Component {
 								</div>
 							</form>
 						</div>
-					</div>
+					</CardPanel>
 				</div>
 			</div>
 		);

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import styled from 'styled-components';
-import { h2Style } from '../utils/h2Style';
+import { h2Style, cardPanelStyle } from '../utils/commonStyle';
 
 const qs = require('qs');
 
 const H2 = h2Style;
+
+const CardPanel = cardPanelStyle;
 
 export default class Register extends Component {
 	constructor(props) {
@@ -45,9 +47,9 @@ export default class Register extends Component {
 
 	render() {
 		return (
-			<div className="container">
-				<div className="col s8 m8 l6">
-					<div className="card-panel">
+			<div className="row">
+				<div className="col s10 m10 l6 offset-l3 offset-m1 offset-s1">
+					<CardPanel className="card-panel">
 						<H2 className="header2" style={{ textAlign: 'center' }}>
 							Open an Account
 						</H2>
@@ -108,22 +110,20 @@ export default class Register extends Component {
 								</div>
 
 								<div className="row">
-									<div className="row">
-										<div className="input-field col s12">
-											<button
-												className="btn cyan waves-effect waves-light right"
-												type="submit"
-												name="action"
-											>
-												Submit
-												<i className="mdi-content-send right" />
-											</button>
-										</div>
+									<div className="input-field col s12">
+										<button
+											className="btn cyan waves-effect waves-light right"
+											type="submit"
+											name="action"
+										>
+											Submit
+											<i className="mdi-content-send right" />
+										</button>
 									</div>
 								</div>
 							</form>
 						</div>
-					</div>
+					</CardPanel>
 				</div>
 			</div>
 		);
