@@ -7,14 +7,6 @@ import { tokenInHeaders } from '../utils/tokenInHeaders';
 
 //Set up headers for Authorization when access /todos api
 tokenInHeaders();
-// (function() {
-// 	const token = sessionStorage.getItem('token');
-// 	if (token) {
-// 		Axios.defaults.headers.common['x-access-token'] = token;
-// 	} else {
-// 		Axios.defaults.headers.common['x-access-token'] = null;
-// 	}
-// })();
 
 const Table = styled.table`
 	width: 70%;

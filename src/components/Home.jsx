@@ -29,13 +29,19 @@ const TheIcons = styled.span`
 `;
 
 const H1 = styled.h1`
-	font-size: 100px;
+	font-size: 85px;
 	color: #33363d;
+	@media (max-width: 992px) {
+		font-size: 70px;
+	}
 `;
 
 const P = styled.p`
 	font-size: 25px;
 	text-align: center;
+	@media (max-width: 992px) {
+		font-size: 20px;
+	}
 `;
 
 const IMAGE = styled.img`
@@ -43,6 +49,10 @@ const IMAGE = styled.img`
 	max-width: 500px;
 	max-height: 500px;
 	margin-top: 50px;
+	@media (max-width: 992px) {
+		max-width: 450px;
+		max-height: 450px;
+	}
 `;
 
 class Home extends Component {

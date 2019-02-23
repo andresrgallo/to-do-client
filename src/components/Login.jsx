@@ -43,10 +43,10 @@ class Login extends Component {
 	render() {
 		return (
 			<div className="row">
-				<div className="col s10 m10 l8 offset-l2 offset-m1 offset-s1">
+				<div className="col s10 m10 l6 offset-l3 offset-m1 offset-s1">
 					<CardPanel className="card-panel">
 						<H2 className="header2" style={{ textAlign: 'center' }}>
-							Log In To Your Account
+							Log In
 						</H2>
 						<div className="row">
 							<form className="col s12" onSubmit={this.handleSubmit}>
