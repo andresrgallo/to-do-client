@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import styled from 'styled-components';
+import Add from '@material-ui/icons/Add';
+import './Todos.css';
 
 import TodoLine from './TodoLine';
 import { tokenInHeaders } from '../utils/tokenInHeaders';
@@ -8,9 +10,13 @@ import { tokenInHeaders } from '../utils/tokenInHeaders';
 //Set up headers for Authorization when access /todos api
 tokenInHeaders();
 
+const TableWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+`;
+
 const Table = styled.table`
 	width: 70%;
-	margin-left: 15%;
 `;
 
 const Th = styled.th`
@@ -46,19 +52,29 @@ class Todos extends Component {
 		return (
 			<div>
 				<H1>To-Do(s)</H1>
-				<Table>
-					<thead>
-						<tr>
-							<Th>To-Do</Th>
-							<Th>Created Date</Th>
-							<Th>Completed?</Th>
-							<Th>Completed Date</Th>
-						</tr>
-					</thead>
-					<tbody>
-						<TodoLine todos={todos} />
-					</tbody>
-				</Table>
+				<TableWrapper style={{ display: 'flex' }}>
+					<Table className="responsive-table highlight">
+						<thead>
+							<tr>
+								<Th>To-Do</Th>
+								<Th>Created Date</Th>
+								<Th>Completed?</Th>
+								<Th>Completed Date</Th>
+							</tr>
+						</thead>
+						<tbody>
+							<TodoLine todos={todos} />
+							<tr id="add-row" style={{ border: 'none' }}>
+								<th style={{ textAlign: 'center' }}>
+									<a href="/todo-list/add">
+										{' '}
+										<Add id="add-icon" />
+									</a>
+								</th>
+							</tr>
+						</tbody>
+					</Table>
+				</TableWrapper>
 			</div>
 		);
 	}

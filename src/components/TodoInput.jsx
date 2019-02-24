@@ -53,7 +53,6 @@ class TodoInput extends Component {
 
 	render() {
 		const { text } = this.state;
-		console.log(this.state);
 		return (
 			<div className="row">
 				<div className="col s8 m8 l6 offset-l3 offset-m2 offset-s2">
