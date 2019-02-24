@@ -7,6 +7,9 @@ import ThumbUp from '@material-ui/icons/ThumbUp';
 import ThumbDown from '@material-ui/icons/ThumbDown';
 import { confirmExpiration } from '../utils/jsnTokenMiddleware';
 
+//Set up headers for Authorization when access /todos api
+tokenInHeaders();
+
 const Td = styled.th`
 	text-align: center;
 `;
