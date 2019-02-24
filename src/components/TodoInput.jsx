@@ -18,6 +18,9 @@ const Card = styled.div`
 const H4 = styled.h4`
 	text-align: center;
 	padding: 20px;
+	@media (max-width: 600px) {
+		font-size: 20px;
+	}
 `;
 
 class TodoInput extends Component {
@@ -53,7 +56,7 @@ class TodoInput extends Component {
 		console.log(this.state);
 		return (
 			<div className="row">
-				<div className="col s8 m8 l6 offset-l3">
+				<div className="col s8 m8 l6 offset-l3 offset-m2 offset-s2">
 					<Card className="card-panel">
 						<H4 className="card-title">Add a To-Do</H4>
 						<div className="row">

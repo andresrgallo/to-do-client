@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import { confirmExpiration } from '../utils/jsnTokenMiddleware';
+import { h2Style, cardPanelStyle } from '../utils/commonStyle';
 
 const qs = require('qs');
+
+const CardPanel = cardPanelStyle;
+
+const H2 = h2Style;
 
 class Profile extends Component {
 	constructor(props) {
@@ -52,10 +57,10 @@ class Profile extends Component {
 		return (
 			<div className="container">
 				<div className="col s8 m8 l6">
-					<div className="card-panel">
-						<h2 className="header2" style={{ textAlign: 'center' }}>
+					<CardPanel className="card-panel">
+						<H2 className="header2" style={{ textAlign: 'center' }}>
 							Change your password
-						</h2>
+						</H2>
 						<div className="row">
 							<form className="col s12" onSubmit={this.handleSubmit}>
 								<div className="row">
@@ -98,7 +103,7 @@ class Profile extends Component {
 								</div>
 							</form>
 						</div>
-					</div>
+					</CardPanel>
 				</div>
 			</div>
 		);

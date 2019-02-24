@@ -15,4 +15,5 @@ const h2Style = styled.h2`
 const cardPanelStyle = styled.div`
 	margin-top: 2.8rem;
 `;
+
 export { h2Style, cardPanelStyle };

@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import styled from 'styled-components';
+import { cardPanelStyle } from '../utils/commonStyle';
 
 const qs = require('qs');
+
+const CardPanel = cardPanelStyle;
+
+const H2 = styled.h2`
+	font-size: 40px;
+
+	@media (max-width: 768px) {
+		font-size: 35px;
+	}
+	@media (max-width: 600px) {
+		font-size: 20px;
+	}
+`;
 
 class ForgotPassword extends Component {
 	constructor(props) {
@@ -33,12 +48,12 @@ class ForgotPassword extends Component {
 
 	render() {
 		return (
-			<div className="container">
-				<div className="col s8 m8 l6">
-					<div className="card-panel">
-						<h2 className="header2" style={{ textAlign: 'center' }}>
+			<div className="row">
+				<div className="col s12 m8 l6 offset-m2 offset-l3">
+					<CardPanel className="card-panel">
+						<H2 className="header2" style={{ textAlign: 'center' }}>
 							Reset your password
-						</h2>
+						</H2>
 						<div className="row">
 							<form className="col s12" onSubmit={this.handleSubmit}>
 								<div className="row">
@@ -71,7 +86,7 @@ class ForgotPassword extends Component {
 								</div>
 							</form>
 						</div>
-					</div>
+					</CardPanel>
 				</div>
 			</div>
 		);

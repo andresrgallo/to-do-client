@@ -1,7 +1,26 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import styled from 'styled-components';
+import { cardPanelStyle } from '../utils/commonStyle';
 
 const qs = require('qs');
+
+const CardPanel = cardPanelStyle;
+
+const H2 = styled.h2`
+	font-size: 40px;
+
+	@media (max-width: 992px) {
+		font-size: 35px;
+	}
+
+	@media (max-width: 768px) {
+		font-size: 30px;
+	}
+	@media (max-width: 600px) {
+		font-size: 20px;
+	}
+`;
 
 class Reset extends Component {
 	constructor(props) {
@@ -34,11 +53,11 @@ class Reset extends Component {
 		console.log('at resetp', this.state);
 		return (
 			<div className="row" style={{ marginTop: '50px' }}>
-				<div className="col s12 m8 l6 offset-l3 offsetm-2">
-					<div className="card-panel">
-						<h2 className="header2" style={{ textAlign: 'center' }}>
+				<div className="col s12 m8 l6 offset-l3 offset-m2">
+					<CardPanel className="card-panel">
+						<H2 className="header2" style={{ textAlign: 'center' }}>
 							Enter your temporary password
-						</h2>
+						</H2>
 						<div className="row">
 							<form className="col s8  offset-s2" onSubmit={this.handleSubmit}>
 								<div className="row">
@@ -71,7 +90,7 @@ class Reset extends Component {
 								</div>
 							</form>
 						</div>
-					</div>
+					</CardPanel>
 				</div>
 			</div>
 		);

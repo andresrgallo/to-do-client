@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import todoImage from './images/to-do-heroe-min.jpg';
-import Alarm from '@material-ui/icons/Alarm';
-import DoneAll from '@material-ui/icons/DoneAll';
 import styled from 'styled-components';
+import './Home.css';
 
 const MAINDIV = styled.div`
 	display: flex;
@@ -12,6 +11,14 @@ const MAINDIV = styled.div`
 	padding: 30px;
 	background-color: #f2f2f2;
 	height: 91vh;
+	@media (max-width: 768px) {
+		padding: 20px;
+	}
+	@media (max-width: 600px) {
+		padding: 5px;
+		flex-wrap: wrap;
+		height: 91vh;
+	}
 }
 `;
 
@@ -22,6 +29,10 @@ const Div = styled.div`
 	width: 100%;
 	padding-top: 60px;
 	padding-right: 10px;
+	@media (max-width: 600px) {
+		padding-top: 15px;
+		height: 25%;
+	}
 `;
 
 const TheIcons = styled.span`
@@ -32,7 +43,13 @@ const H1 = styled.h1`
 	font-size: 85px;
 	color: #33363d;
 	@media (max-width: 992px) {
-		font-size: 70px;
+		font-size: 50px;
+	}
+	@media (max-width: 768px) {
+		font-size: 30px;
+	}
+	@media (max-width: 600px) {
+		margin: 10px;
 	}
 `;
 
@@ -41,6 +58,9 @@ const P = styled.p`
 	text-align: center;
 	@media (max-width: 992px) {
 		font-size: 20px;
+	}
+	@media (max-width: 768px) {
+		font-size: 18px;
 	}
 `;
 
@@ -52,6 +72,15 @@ const IMAGE = styled.img`
 	@media (max-width: 992px) {
 		max-width: 450px;
 		max-height: 450px;
+	}
+	@media (max-width: 768px) {
+		max-width: 350px;
+		max-height: 350px;
+	}
+	@media (max-width: 600px) {
+		max-width: 280px;
+		max-height: 280px;
+		margin-top: 30px;
 	}
 `;
 
@@ -70,17 +99,8 @@ class Home extends Component {
 			<MAINDIV>
 				<Div>
 					<TheIcons>
-						<Alarm
-							style={{
-								fontSize: '100px',
-								paddingRight: '15px'
-							}}
-						/>
-						<DoneAll
-							style={{
-								fontSize: '80px'
-							}}
-						/>
+						<i class="large material-icons icon-responsive">access_alarm</i>
+						<i class="large material-icons icon-responsive">done_all</i>
 					</TheIcons>
 					<H1 id="welcome">To-Do App</H1>
 					<P>

@@ -87,7 +87,7 @@ class Todo extends Component {
 
 		return (
 			<div className="row">
-				<div className="col s12 m6 offset-m3">
+				<div className="col s12 m8 offset-m2">
 					<div className="card">
 						<H1>To-Do</H1>
 						<div className="card-content">

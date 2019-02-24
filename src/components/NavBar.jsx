@@ -3,6 +3,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { withRouter } from 'react-router-dom';
 import ListAlt from '@material-ui/icons/ListAlt';
 import styled from 'styled-components';
+import './NavBar.css';
 
 const My = styled.a`
 	@media (max-width: 992px) {
