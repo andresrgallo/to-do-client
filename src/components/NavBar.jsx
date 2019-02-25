@@ -124,7 +124,7 @@ class Navbar extends Component {
 								<a href="/todo-list/add">Add a To-Do</a>
 							</li>
 							<li>
-								<a href="/users/profile">Profile</a>
+								<a href="/profile">Profile</a>
 							</li>
 							<MobLogOut onClick={this.handleClick}>Logout</MobLogOut>
 						</React.Fragment>
