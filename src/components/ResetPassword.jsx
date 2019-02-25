@@ -50,7 +50,6 @@ class Reset extends Component {
 	};
 
 	render() {
-		console.log('at resetp', this.state);
 		return (
 			<div className="row" style={{ marginTop: '50px' }}>
 				<div className="col s12 m8 l6 offset-l3 offset-m2">

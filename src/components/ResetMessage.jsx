@@ -14,7 +14,7 @@ const ResetMessage = () => {
 								A new temporary password will be sent to your email account.
 								After following instructions and when you are logged in, please
 								remember to change the password to one that suits you by
-								clicking "Profile" at the navigation bar
+								clicking "Profile" at the navigation bar.
 							</p>
 						</div>
 						<div class="card-action">
