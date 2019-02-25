@@ -8,6 +8,10 @@ import Check from '@material-ui/icons/CheckCircleOutline';
 import SentimentVeryDissatisfied from '@material-ui/icons/SentimentVeryDissatisfied';
 import Delete from '@material-ui/icons/Delete';
 import SystemUpdate from '@material-ui/icons/SystemUpdate';
+import { tokenInHeaders } from '../utils/tokenInHeaders';
+
+//Set up headers for Authorization when access /todos api
+tokenInHeaders();
 
 const H1 = styled.h1`
 	text-align: center
@@ -55,7 +59,7 @@ class Todo extends Component {
 
 	handleDelete = () => {
 		axios
-			.delete(`/todos/${this.state.todo._id}`)
+			.delete(`${process.env.REACT_APP_API_URL}/todos/${this.state.todo._id}`)
 			.then(() => console.log('succesfully deleted'))
 			.catch(e => console.log('error', e));
 		this.props.history.push('/todo-list');
