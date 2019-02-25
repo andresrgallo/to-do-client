@@ -63,18 +63,6 @@ class TodoLine extends Component {
 					<td style={{ textAlign: 'center', color: '#ad0b0b' }}>
 						-- Add your first to-do --
 					</td>
-					<td>
-						<Link
-							to={'/todo-list/add'}
-							className="waves-effect waves-light btn-small"
-							style={{ marginLeft: 10 }}
-						>
-							<MaterialIcon className="material-icons left">
-								<AddtoDo />
-							</MaterialIcon>
-							Add a To-Do
-						</Link>
-					</td>
 				</tr>
 			);
 
