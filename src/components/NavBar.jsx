@@ -29,6 +29,21 @@ const Link = styled.a`
 	color: #ffc287;
 `;
 
+const MobLogOut = styled.button`
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	font-size: 14px;
+	font-weight: 500;
+	height: 48px;
+	line-height: 48px;
+	padding: 0 32px;
+	text-align: left;
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.05);
+	}
+`;
+
 class Navbar extends Component {
 	handleClick = () => {
 		sessionStorage.clear();
@@ -111,6 +126,7 @@ class Navbar extends Component {
 							<li>
 								<a href="/users/profile">Profile</a>
 							</li>
+							<MobLogOut onClick={this.handleClick}>Logout</MobLogOut>
 						</React.Fragment>
 					)}
 				</ul>
