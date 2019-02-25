@@ -31,7 +31,7 @@ const Link = styled.a`
 
 class Navbar extends Component {
 	handleClick = () => {
-		sessionStorage.removeItem('token', 'email');
+		sessionStorage.clear();
 		this.props.history.push('/');
 	};
 
