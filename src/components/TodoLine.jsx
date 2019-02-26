@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import AddtoDo from '@material-ui/icons/AddToQueue';
 import ThumbUp from '@material-ui/icons/ThumbUp';
 import ThumbDown from '@material-ui/icons/ThumbDown';
 import { confirmExpiration } from '../utils/jsnTokenMiddleware';
@@ -14,17 +13,11 @@ tokenInHeaders();
 const Td = styled.th`
 	text-align: center;
 `;
-const MaterialIcon = styled.i`
-	padding: 5px;
-`;
 
 class TodoLine extends Component {
 	//Check if Jason Web Token has expired
 	componentWillMount() {
-		if (confirmExpiration()) {
-			sessionStorage.removeItem('token', 'email');
-			window.location = '/login';
-		}
+		confirmExpiration();
 	}
 	render() {
 		const { todos } = this.props;

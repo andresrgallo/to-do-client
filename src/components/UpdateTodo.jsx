@@ -26,10 +26,7 @@ class UpdateTodo extends Component {
 
 	//Check if Jason Web Token has expired
 	componentWillMount() {
-		if (confirmExpiration()) {
-			sessionStorage.removeItem('token', 'email');
-			window.location = '/login';
-		}
+		confirmExpiration();
 	}
 
 	handleChange = e => {

@@ -8,5 +8,8 @@ export const confirmExpiration = () => {
 			if (err.message === 'jwt expired') isExpiredToken = true;
 		}
 	});
-	return isExpiredToken;
+	if (isExpiredToken) {
+		sessionStorage.clear();
+		window.location = '/login';
+	}
 };
