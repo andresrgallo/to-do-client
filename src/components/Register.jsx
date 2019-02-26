@@ -43,8 +43,15 @@ export default class Register extends Component {
 						this.props.history.push('/login');
 					})
 					.catch(error => {
-						if (error.response && error.response.data.code === 11000)
+						console.log(error.response);
+
+						if (error.response && error.response.data.code === 11000) {
 							alert('Email already exists!');
+						} else if (error.response.data.errors.password) {
+							alert('Password minimum length is 5 characters');
+						} else if (error.response.data.errors.name) {
+							alert('Name minimum length is 2 characters');
+						}
 					});
 
 		e.preventDefault();

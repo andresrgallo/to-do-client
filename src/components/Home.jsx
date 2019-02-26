@@ -99,8 +99,8 @@ class Home extends Component {
 			<MAINDIV>
 				<Div>
 					<TheIcons>
-						<i class="large material-icons icon-responsive">access_alarm</i>
-						<i class="large material-icons icon-responsive">done_all</i>
+						<i className="large material-icons icon-responsive">access_alarm</i>
+						<i className="large material-icons icon-responsive">done_all</i>
 					</TheIcons>
 					<H1 id="welcome">To-Do App</H1>
 					<P>

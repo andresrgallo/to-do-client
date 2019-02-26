@@ -43,7 +43,11 @@ class TodoInput extends Component {
 		text = capitalize(text);
 		Axios.post(`${process.env.REACT_APP_API_URL}/todos`, qs.stringify({ text }))
 			.then(todo => console.log('To-do Added'))
-			.catch(e => console.log(e));
+			.catch(e => {
+				console.log(e.response);
+				if (e.response.data.error === 'ValidatorError')
+					alert('To-do minimum length is 3 characters');
+			});
 		e.preventDefault();
 		this.props.history.push('/todo-list');
 	};
