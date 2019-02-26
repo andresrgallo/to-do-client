@@ -36,7 +36,12 @@ export default class Register extends Component {
 						password: user.password
 					})
 			  )
-					.then(() => this.props.history.push('/login'))
+					.then(() => {
+						alert(
+							'Your details have been added, please login after this prompt'
+						);
+						this.props.history.push('/login');
+					})
 					.catch(error => {
 						if (error.response && error.response.data.code === 11000)
 							alert('Email already exists!');
